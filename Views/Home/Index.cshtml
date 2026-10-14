@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "Главная";
+}
+
+<div class="container">
+
+    <!-- Hero-блок с градиентом -->
+    <div class="p-5 mb-4 rounded-3 shadow text-white"
+         style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        <div class="container-fluid py-4">
+            <h1 class="display-5 fw-bold">Система управления IT-проектами</h1>
+            <p class="col-md-8 fs-4">
+                Веб-приложение для учёта задач в IT-проектах: просмотр списка задач,
+                добавление новых, редактирование, удаление и отслеживание статуса.
+            </p>
+            <a asp-controller="ProjectTask" asp-action="Index" class="btn btn-light btn-lg mt-3 fw-semibold">
+    Перейти к задачам →
+</a>
+        </div>
+    </div>
+
+    <!-- Три карточки с цветными акцентами -->
+    <div class="row text-center">
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 shadow-sm rounded-4 border-0 border-top border-4 border-primary">
+                <div class="card-body">
+                    <div class="fs-1">📋</div>
+                    <h5 class="card-title text-primary fw-bold">Каталог задач</h5>
+                    <p class="card-text text-muted">Просмотр всех задач проекта с деталями.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 shadow-sm rounded-4 border-0 border-top border-4 border-success">
+                <div class="card-body">
+                    <div class="fs-1">➕</div>
+                    <h5 class="card-title text-success fw-bold">Добавление</h5>
+                    <p class="card-text text-muted">Создание новых задач с приоритетом и сроком.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 shadow-sm rounded-4 border-0 border-top border-4 border-warning">
+                <div class="card-body">
+                    <div class="fs-1">⚙️</div>
+                    <h5 class="card-title text-warning fw-bold">Управление</h5>
+                    <p class="card-text text-muted">Редактирование, удаление, смена статуса.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Нижняя полоса со статистикой -->
+    <div class="row text-white text-center rounded-4 shadow-sm mt-2"
+         style="background: linear-gradient(90deg, #11998e 0%, #38ef7d 100%);">
+        <div class="col-md-4 py-3">
+            <div class="fs-3 fw-bold">3</div>
+            <div class="small">активных проекта</div>
+        </div>
+        <div class="col-md-4 py-3 border-start border-end border-white border-opacity-25">
+            <div class="fs-3 fw-bold">12</div>
+            <div class="small">задач в работе</div>
+        </div>
+        <div class="col-md-4 py-3">
+            <div class="fs-3 fw-bold">87%</div>
+            <div class="small">выполнено</div>
+        </div>
+    </div>
+<p class="text-muted text-center mt-4 small">
+        Сегодня: @DateTime.Now.ToString("dd.MM.yyyy") · Заголовок: @ViewData["Title"]
+    </p>
+</div>

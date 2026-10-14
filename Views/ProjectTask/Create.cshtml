@@ -1,0 +1,90 @@
+@model ProjectTask
+@{
+    ViewData["Title"] = "Новая задача";
+}
+
+<div class="container">
+    <div class="card shadow rounded-4 border-0 overflow-hidden">
+
+        <!-- Градиентная шапка -->
+        <div class="p-4 text-white"
+             style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <h2 class="mb-1"> Добавление задачи</h2>
+            <p class="mb-0 opacity-75">Заполните поля и нажмите «Сохранить»</p>
+        </div>
+
+        <div class="card-body p-4">
+            <form asp-action="Create" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+                    <label asp-for="Title" class="form-label fw-semibold">
+                         Название
+                    </label>
+                    <input asp-for="Title" class="form-control border-primary"
+                           placeholder="Например: Разработать модуль оплаты" />
+                    <span asp-validation-for="Title" class="text-danger small"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Project" class="form-label fw-semibold">
+                             Проект
+                        </label>
+                        <input asp-for="Project" class="form-control border-info"
+                               placeholder="Интернет-магазин" />
+                        <span asp-validation-for="Project" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Assignee" class="form-label fw-semibold">
+                             Исполнитель
+                        </label>
+                        <input asp-for="Assignee" class="form-control border-info"
+                               placeholder="Иванов И.И." />
+                        <span asp-validation-for="Assignee" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Priority" class="form-label fw-semibold">
+                             Приоритет
+                        </label>
+                        <select asp-for="Priority" class="form-select border-warning">
+                            <option value="">— выберите —</option>
+                            <option value="Low">🟢 Low</option>
+                            <option value="Medium">🟡 Medium</option>
+                            <option value="High">🔴 High</option>
+                        </select>
+                        <span asp-validation-for="Priority" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="DueDate" class="form-label fw-semibold">
+                             Срок выполнения
+                        </label>
+                        <input asp-for="DueDate" type="date" class="form-control border-success" />
+                        <span asp-validation-for="DueDate" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <div class="form-check form-switch mb-4">
+                    <input asp-for="IsCompleted" class="form-check-input" role="switch" />
+                    <label asp-for="IsCompleted" class="form-check-label">
+                         Задача уже выполнена
+                    </label>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary px-4"> Сохранить</button>
+                    <a asp-action="Index" class="btn btn-outline-secondary">← Назад</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

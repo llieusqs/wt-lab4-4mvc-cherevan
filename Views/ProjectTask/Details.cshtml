@@ -1,0 +1,78 @@
+@model ProjectTask
+@{
+    ViewData["Title"] = "Задача #" + Model.Id;
+
+    var stripeColor = Model.Priority switch
+    {
+        "High" => "#dc3545",     // красная полоска
+        "Medium" => "#ffc107",   // жёлтая
+        _ => "#198754"           // зелёная
+    };
+    var priorityBadge = Model.Priority switch
+    {
+        "High" => "bg-danger",
+        "Medium" => "bg-warning text-dark",
+        _ => "bg-success"
+    };
+}
+
+<div class="container">
+
+    <div class="card shadow-sm rounded-4 border-0 overflow-hidden">
+
+        <!-- Тонкая цветная полоса сверху -->
+        <div style="height:6px; background:@stripeColor;"></div>
+
+        <div class="card-body p-4">
+
+            <div class="d-flex justify-content-between align-items-start mb-3">
+                <div>
+                    <div class="text-muted small">Задача #@Model.Id</div>
+                    <h1 class="h3 mb-0">@Model.Title</h1>
+                </div>
+                @if (Model.IsCompleted)
+                {
+                    <span class="badge bg-success">✔ Выполнено</span>
+                }
+                else
+                {
+                    <span class="badge bg-secondary">⏳ В работе</span>
+                }
+            </div>
+
+            <hr />
+
+            <dl class="row mb-0">
+                <dt class="col-sm-3 text-muted">Проект</dt>
+                <dd class="col-sm-9">@Model.Project</dd>
+
+                <dt class="col-sm-3 text-muted">Исполнитель</dt>
+                <dd class="col-sm-9">@Model.Assignee</dd>
+
+                <dt class="col-sm-3 text-muted">Приоритет</dt>
+                <dd class="col-sm-9">
+                    <span class="badge @priorityBadge">@Model.Priority</span>
+                </dd>
+
+                <dt class="col-sm-3 text-muted">Срок выполнения</dt>
+                <dd class="col-sm-9">@Model.DueDate.ToString("dd.MM.yyyy")</dd>
+
+                <dt class="col-sm-3 text-muted">Статус</dt>
+                <dd class="col-sm-9">@(Model.IsCompleted ? "Выполнено" : "В работе")</dd>
+            </dl>
+
+            <hr />
+
+            <div class="d-flex gap-2">
+    <a asp-action="Index" class="btn btn-outline-secondary">← Назад к списку</a>
+    <a asp-action="Cards" class="btn btn-outline-primary">🃏 К карточкам</a>
+
+    <form asp-action="Delete" asp-route-id="@Model.Id" method="post" class="ms-auto"
+          onsubmit="return confirm('Удалить задачу «@Model.Title»?');">
+        <button type="submit" class="btn btn-outline-danger">🗑 Удалить</button>
+    </form>
+</div>
+
+        </div>
+    </div>
+</div>

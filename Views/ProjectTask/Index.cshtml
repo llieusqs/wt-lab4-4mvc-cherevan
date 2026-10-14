@@ -1,0 +1,71 @@
+@model List<ProjectTask>
+@{
+    ViewData["Title"] = "Задачи";
+}
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="mb-0">📋 Задачи IT-проектов</h1>
+        <div>
+            <span class="badge bg-dark fs-6 me-2">Всего: @Model.Count</span>
+            <a asp-action="Cards" class="btn btn-outline-warning me-2">🃏 Карточки</a>
+            <a asp-action="Create" class="btn btn-warning">+ Добавить задачу</a>
+        </div>
+    </div>
+
+    <div class="card shadow rounded-4 border-0 overflow-hidden">
+        <table class="table table-hover align-middle mb-0">
+            <thead style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white;">
+                <tr>
+                    <th>ID</th>
+                    <th>Название</th>
+                    <th>Проект</th>
+                    <th>Исполнитель</th>
+                    <th>Приоритет</th>
+                    <th>Срок</th>
+                    <th>Статус</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var task in Model)
+                {
+                    var badgeClass = task.Priority switch
+                    {
+                        "High" => "bg-danger",
+                        "Medium" => "bg-warning text-dark",
+                        _ => "bg-success"
+                    };
+                    <tr>
+                        <td>@task.Id</td>
+                        <td class="fw-semibold">@task.Title</td>
+                        <td>@task.Project</td>
+                        <td>@task.Assignee</td>
+                        <td><span class="badge @badgeClass">@task.Priority</span></td>
+                        <td>@task.DueDate.ToString("dd.MM.yyyy")</td>
+                        <td>
+                            @if (task.IsCompleted)
+                            {
+                                <span class="badge bg-success">✔ Выполнено</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary">⏳ В работе</span>
+                            }
+                        </td>
+                       <td class="text-nowrap">
+    <a asp-action="Details" asp-route-id="@task.Id"
+       class="btn btn-sm btn-outline-primary">
+        Подробнее
+    </a>
+    <form asp-action="Delete" asp-route-id="@task.Id" method="post" class="d-inline"
+          onsubmit="return confirm('Удалить задачу «@task.Title»?');">
+        <button type="submit" class="btn btn-sm btn-outline-danger">🗑</button>
+    </form>
+</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,90 @@
+/* ─── Базовая типографика ──────────────────────────── */
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+    html { font-size: 16px; }
+}
+
+body {
+    background: #f7f8fb;
+    font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ─── Navbar ──────────────────────────────────────── */
+.app-navbar {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+}
+
+.app-navbar .navbar-brand {
+    font-size: 1.15rem;
+    letter-spacing: .3px;
+}
+
+.app-navbar .nav-link {
+    color: rgba(255, 255, 255, .85) !important;
+    padding: .35rem .9rem !important;
+    border-radius: 8px;
+    transition: all .2s ease;
+}
+
+.app-navbar .nav-link:hover {
+    color: #fff !important;
+    background: rgba(255, 255, 255, .15);
+    transform: translateY(-1px);
+}
+
+/* ─── Footer ──────────────────────────────────────── */
+.app-footer {
+    background: #ffffff;
+    border-top: 1px solid #e6e8ee;
+    color: #6c757d;
+}
+
+.app-footer a {
+    text-decoration: none;
+    color: #667eea;
+}
+
+.app-footer a:hover {
+    text-decoration: underline;
+}
+
+/* ─── Карточки задач ─────────────────────────────── */
+.task-card {
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.task-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 .75rem 1.5rem rgba(0, 0, 0, .15) !important;
+}
+
+/* ─── Кнопки ──────────────────────────────────────── */
+.btn {
+    border-radius: 8px;
+    transition: all .15s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+/* ─── Таблица ─────────────────────────────────────── */
+table.table tbody tr {
+    transition: background-color .15s ease;
+}
+
+table.table tbody tr:hover {
+    background-color: #f1f3fa !important;
+}
+
+/* ─── Заголовки страниц ───────────────────────────── */
+h1 {
+    color: #2b2f45;
+}

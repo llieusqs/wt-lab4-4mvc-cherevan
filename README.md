@@ -16,3 +16,11 @@
 - ASP.NET Core MVC (.NET 10)
 - Bootstrap 5
 - Docker
+
+## Репозиторий
+
+https://github.com/llieusqs/wt-lab4-4mvc-cherevan
+
+## Опубликованное приложение
+
+https://wt-lab4-4mvc-cherevan.onrender.com
